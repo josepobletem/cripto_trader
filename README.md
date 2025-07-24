@@ -5,22 +5,40 @@ Proyecto de trading automático de criptomonedas en Python, usando FastAPI, Bina
 ---
 
 ## 📦 Estructura
-
+```bash
 crypto_trader/
-├── main.py # API principal FastAPI
-├── .env # Claves Binance / OpenAI
-├── Dockerfile, docker-compose.yml
+├── .env                             # Claves Binance / OpenAI / configuración
+├── Dockerfile                       # Imagen para producción
+├── Makefile                         # Comandos útiles: test, run, build
+├── README.md                        # Documentación del proyecto
+├── docker-compose.yml              # Orquestación de contenedor
+├── main.py                          # API FastAPI + Scheduler
+├── requirements.txt                 # Dependencias
+
 ├── trading/
-│ ├── binance_client.py # Conexión Binance
-│ ├── strategy.py # Estrategia (EMA)
-│ ├── gpt_helper.py # Explicación GPT
-│ ├── scheduler.py # Automatización
-│ ├── db.py # SQLite
-│ └── logger.py
-├── tests/ # Tests unitarios
+│   ├── __init__.py
+│   ├── binance_client.py           # Clase BinanceClient: precios y órdenes
+│   ├── strategy.py                 # Clase TradingStrategy: lógica de EMA
+│   ├── gpt_helper.py               # Clase GPTExplainer: explica decisiones
+│   ├── scheduler.py                # Clase TradingScheduler: ejecución cíclica
+│   ├── db.py                       # Clase DatabaseManager: persistencia SQLite
+│   ├── logger.py                   # Clase Logger
+│   └── model.py                    # Modelo Trade para SQLAlchemy
 
+├── tests/
+│   ├── conftest.py                 # Fixtures de test
+│   ├── test_binance_client.py     # Test mock de Binance
+│   ├── test_gpt_helper.py         # Test mock de OpenAI
+│   ├── test_scheduler.py          # Test integración lógica de ciclo
+│   └── test_strategy.py           # Test unitario de lógica de decisión
 
----
+├── trading.log                     # Logs del bot
+├── trades.db                       # Base de datos SQLite
+
+└── .github/
+    └── workflows/
+        └── ci.yml      
+```
 
 ## 🚀 Uso rápido
 
