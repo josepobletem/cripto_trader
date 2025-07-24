@@ -1,0 +1,15 @@
+fastapi
+uvicorn
+python-dotenv
+openai
+requests
+apscheduler
+sqlalchemy
+pydantic
+binance
+prometheus-client
+pydantic
+black
+isort
+flake8
+pytest

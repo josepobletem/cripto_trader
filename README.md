@@ -7,37 +7,50 @@ Proyecto de trading automático de criptomonedas en Python, usando FastAPI, Bina
 ## 📦 Estructura
 ```bash
 crypto_trader/
-├── .env                             # Claves Binance / OpenAI / configuración
-├── Dockerfile                       # Imagen para producción
-├── Makefile                         # Comandos útiles: test, run, build
-├── README.md                        # Documentación del proyecto
-├── docker-compose.yml              # Orquestación de contenedor
-├── main.py                          # API FastAPI + Scheduler
-├── requirements.txt                 # Dependencias
+├── .env
+├── Dockerfile
+├── Makefile
+├── README.md
+├── docker-compose.yml
+├── main.py
+├── requirements.txt
 
 ├── trading/
 │   ├── __init__.py
-│   ├── binance_client.py           # Clase BinanceClient: precios y órdenes
-│   ├── strategy.py                 # Clase TradingStrategy: lógica de EMA
-│   ├── gpt_helper.py               # Clase GPTExplainer: explica decisiones
-│   ├── scheduler.py                # Clase TradingScheduler: ejecución cíclica
-│   ├── db.py                       # Clase DatabaseManager: persistencia SQLite
-│   ├── logger.py                   # Clase Logger
-│   └── model.py                    # Modelo Trade para SQLAlchemy
+│   ├── binance_client.py
+│   ├── strategy.py
+│   ├── gpt_helper.py
+│   ├── scheduler.py
+│   ├── db.py
+│   ├── logger.py
+│   ├── model.py
+│   └── schemas.py
 
 ├── tests/
-│   ├── conftest.py                 # Fixtures de test
-│   ├── test_binance_client.py     # Test mock de Binance
-│   ├── test_gpt_helper.py         # Test mock de OpenAI
-│   ├── test_scheduler.py          # Test integración lógica de ciclo
-│   └── test_strategy.py           # Test unitario de lógica de decisión
+│   ├── conftest.py
+│   ├── test_binance_client.py
+│   ├── test_gpt_helper.py
+│   ├── test_scheduler.py
+│   ├── test_strategy.py
+│   └── infra/
+│       ├── test_deploy_gcp.py     # Test para despliegue GCP simulado o real
+│       └── test_deploy_aws.py     # Test para despliegue AWS simulado o real
 
-├── trading.log                     # Logs del bot
-├── trades.db                       # Base de datos SQLite
+├── trading.log
+├── trades.db
+
+├── infra/
+│   ├── gcp/
+│   │   ├── main.tf
+│   │   └── variables.tf
+│   └── aws/
+│       ├── main.tf
+│       └── variables.tf
 
 └── .github/
     └── workflows/
-        └── ci.yml      
+        └── ci.yml
+
 ```
 
 ## 🚀 Uso rápido
@@ -97,3 +110,37 @@ TRADE_QUANTITY=0.001
 
 Desarrollado por José Poblete M.
 MIT License
+
+🙌 Créditos
+
+Este proyecto fue creado con el propósito de emprender, aprender y construir una herramienta práctica de inversión basada en automatización, datos y transparencia.
+
+Inspirado en la necesidad de contar con sistemas accesibles y abiertos para operar en el mundo de las criptomonedas de forma responsable y mejor informada.
+🚀 Dedicado a
+
+Este proyecto está dedicado a todas las personas que:
+
+    Quieren emprender en tecnología e inversión.
+
+    Buscan aprender desde cero y crear soluciones reales.
+
+    Sueñan con construir herramientas útiles para ellos y su comunidad.
+
+    Creen en la colaboración abierta para mejorar lo que existe.
+
+💡 Mejora y contribuye
+
+crypto_trader está hecho para usarse, aprender y evolucionar.
+Siéntete libre de:
+
+    Clonarlo y adaptarlo
+
+    Mejorar la estrategia de trading
+
+    Añadir indicadores más avanzados
+
+    Conectarlo con otros exchanges o APIs
+
+    Contribuir con ideas, feedback o código
+
+Tu participación es bienvenida 🤝

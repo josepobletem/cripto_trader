@@ -1,0 +1,13 @@
+version: "3.9"
+
+services:
+  trader:
+    build: .
+    container_name: crypto_trader
+    env_file: .env
+    volumes:
+      - ./trading.log:/app/trading.log
+      - ./trades.db:/app/trades.db
+    ports:
+      - "8000:8000"
+    restart: unless-stopped

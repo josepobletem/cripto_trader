@@ -1,0 +1,84 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+env:
+  PYTHON_VERSION: "3.10"
+
+jobs:
+  lint-format-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install black isort flake8 pytest
+
+      - name: Check code format with black
+        run: black --check .
+
+      - name: Check import order with isort
+        run: isort . --check-only
+
+      - name: Lint with flake8
+        run: flake8 trading/ tests/
+
+      - name: Run tests
+        run: pytest tests/
+
+  docker:
+    needs: lint-format-test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build Docker image
+        run: docker build -t crypto_trader .
+
+  terraform-gcp-test:
+    needs: docker
+    runs-on: ubuntu-latest
+    name: Test GCP Terraform Plan (Simulado)
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Init & Apply GCP Infra (null_resource test)
+        working-directory: infra/gcp
+        run: |
+          terraform init
+          terraform validate
+          terraform apply -auto-approve
+
+  terraform-aws-test:
+    needs: docker
+    runs-on: ubuntu-latest
+    name: Test AWS Terraform Plan (Simulado)
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Init & Apply AWS Infra (null_resource test)
+        working-directory: infra/aws
+        run: |
+          terraform init
+          terraform validate
+          terraform apply -auto-approve
