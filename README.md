@@ -4,6 +4,46 @@ Proyecto de trading automático de criptomonedas en Python, usando FastAPI, Bina
 
 ---
 
+🧠 Introducción
+
+crypto_trader es un bot de trading automático de criptomonedas desarrollado con Python, FastAPI, Binance API y OpenAI. Su misión es democratizar el acceso a herramientas inteligentes de inversión, facilitando la toma de decisiones basada en datos, automatización y aprendizaje continuo.
+
+Este proyecto está diseñado como una plataforma de lanzamiento para quienes desean:
+
+    Iniciarse en el mundo del trading algorítmico
+
+    Aprender sobre APIs, automatización y programación orientada a objetos
+
+    Desplegar sistemas reales en la nube (GCP, AWS) con infraestructura como código (Terraform)
+
+    Construir una solución extensible, transparente y auditable
+
+🚀 Lo que se puede alcanzar con este proyecto
+
+Con crypto_trader, puedes:
+
+    📈 Crear una estrategia de trading personalizada y automatizada
+
+    🧠 Generar explicaciones de decisiones usando IA (GPT-4)
+
+    📊 Exponer métricas en tiempo real con Prometheus
+
+    ✅ Validar y testear tu lógica con cobertura unitaria y de integración
+
+    🐳 Contenerizar tu aplicación y desplegarla en minutos con Docker y Terraform
+
+    ☁️ Adaptarlo para correr en Cloud Run, EC2, Fargate, Kubernetes, u otros entornos
+
+Este proyecto no es solo un bot, es una base sólida para:
+
+    Tu primer emprendimiento de trading automatizado
+
+    Una startup de inteligencia financiera
+
+    Un MVP para inversionistas o analistas cuantitativos
+
+    Un portafolio técnico fuerte y aplicable en el mundo real
+
 ## 📦 Estructura
 ```bash
 crypto_trader/
