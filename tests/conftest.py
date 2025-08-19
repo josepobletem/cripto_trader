@@ -1,11 +1,15 @@
-import pytest
-from trading.strategy import TradingStrategy
-from trading.db import DatabaseManager
 import os
+
+import pytest
+
+from trading.db import DatabaseManager
+from trading.strategy import TradingStrategy
+
 
 @pytest.fixture
 def strategy():
     return TradingStrategy()
+
 
 @pytest.fixture
 def test_db():

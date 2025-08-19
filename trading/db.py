@@ -1,8 +1,10 @@
-from sqlalchemy import create_engine, Column, Integer, String, Float, DateTime
-from sqlalchemy.orm import declarative_base, sessionmaker
 from datetime import datetime
 
+from sqlalchemy import Column, DateTime, Float, Integer, String, create_engine
+from sqlalchemy.orm import declarative_base, sessionmaker
+
 Base = declarative_base()
+
 
 class Trade(Base):
     __tablename__ = "trades"
@@ -12,6 +14,7 @@ class Trade(Base):
     explanation = Column(String)
     timestamp = Column(DateTime, default=datetime.utcnow)
 
+
 class DatabaseManager:
     def __init__(self, db_url="sqlite:///trades.db"):
         self.engine = create_engine(db_url)
@@ -20,7 +23,11 @@ class DatabaseManager:
 
     def log_trade(self, decision: str, price: float, explanation: str):
         with self.Session() as session:
-            trade = Trade(decision=decision, price=price, explanation=explanation)
+            trade = Trade(
+                decision=decision,
+                price=price,
+                explanation=explanation,
+            )
             session.add(trade)
             session.commit()
 

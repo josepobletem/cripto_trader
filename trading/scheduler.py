@@ -1,9 +1,13 @@
 from apscheduler.schedulers.background import BackgroundScheduler
 from prometheus_client import Counter
+
 from trading.logger import Logger
 
-TRADE_COUNTER = Counter("trade_decisions_total", "Conteo de decisiones de trade", ["decision"])
+TRADE_COUNTER = Counter(
+    "trade_decisions_total", "Conteo de decisiones de trade", ["decision"]
+)
 ERROR_COUNTER = Counter("trade_errors_total", "Errores durante ejecución")
+
 
 class TradingScheduler:
     def __init__(self, client, strategy, explainer, db):

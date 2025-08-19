@@ -1,12 +1,14 @@
+from typing import List
+
 from fastapi import FastAPI, Response
+from prometheus_client import CONTENT_TYPE_LATEST, generate_latest
+
 from trading.binance_client import BinanceClient
-from trading.strategy import TradingStrategy
-from trading.gpt_helper import GPTExplainer
 from trading.db import DatabaseManager
+from trading.gpt_helper import GPTExplainer
 from trading.scheduler import TradingScheduler
 from trading.schemas import TradeOut, WebhookRequest
-from prometheus_client import generate_latest, CONTENT_TYPE_LATEST
-from typing import List
+from trading.strategy import TradingStrategy
 
 app = FastAPI(title="Crypto Trader API")
 

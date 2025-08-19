@@ -1,15 +1,23 @@
-fastapi
-uvicorn
-python-dotenv
-openai
-requests
-apscheduler
-sqlalchemy
-pydantic
-binance
-prometheus-client
-pydantic
-black
-isort
-flake8
-pytest
+# Core API
+fastapi>=0.110.0
+uvicorn[standard]>=0.29.0
+
+# Trading y conectores
+python-binance>=1.0.17
+openai>=1.25.0
+aiohttp>=3.9.5
+apscheduler>=3.10.4
+
+# Base de datos y utilidades
+sqlalchemy>=2.0.30
+python-dotenv>=1.0.1
+cryptography>=42.0.5
+prometheus-client>=0.20.0
+
+# Testing
+pytest>=8.2.1
+
+# Lint y formato
+black>=24.4.2
+isort>=5.13.2
+flake8>=7.0.0

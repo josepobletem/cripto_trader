@@ -1,5 +1,6 @@
 from collections import deque
 
+
 class TradingStrategy:
     def __init__(self, short_window=3, long_window=5):
         self.prices = deque(maxlen=long_window)
@@ -15,14 +16,22 @@ class TradingStrategy:
             ema = price * k + ema * (1 - k)
         return ema
 
+    def should_buy(self, short_ema, long_ema):
+        return short_ema > long_ema
+
+    def should_sell(self, short_ema, long_ema):
+        return short_ema < long_ema
+
     def decide(self, price: float) -> str:
         self.prices.append(price)
         if len(self.prices) < self.long_window:
             return "hold"
-        short_ema = self.ema(list(self.prices)[-self.short_window:], self.short_window)
+        short_ema = self.ema(list(self.prices)[-self.short_window :], self.short_window)
         long_ema = self.ema(list(self.prices), self.long_window)
-        if short_ema > long_ema:
+        if short_ema is None or long_ema is None:
+            return "hold"
+        if self.should_buy(short_ema, long_ema):
             return "buy"
-        elif short_ema < long_ema:
+        if self.should_sell(short_ema, long_ema):
             return "sell"
         return "hold"
