@@ -1,0 +1,37 @@
+# Evita subir el entorno virtual
+.venv/
+venv/
+
+# Evita subir el repositorio Git (aunque Git ya lo ignora por defecto)
+.git/
+
+# Archivos de Python compilados
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Archivos de logs
+*.log
+
+# Archivos temporales de sistema operativo
+.DS_Store
+Thumbs.db
+
+# Configuración local de editor/IDE
+.vscode/
+.idea/
+
+# Archivos de prueba o cobertura
+.coverage
+htmlcov/
+.tox/
+.cache/
+.pytest_cache/
+
+# Salidas de dist y build
+dist/
+build/
+*.egg-info/
+
+# Jupyter notebooks checkpoints
+.ipynb_checkpoints/
