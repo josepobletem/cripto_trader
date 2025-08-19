@@ -1,5 +1,7 @@
-from trading.scheduler import TradingScheduler
 from unittest.mock import MagicMock
+
+from trading.scheduler import TradingScheduler
+
 
 def test_run_cycle_logs_and_stores():
     client = MagicMock()

@@ -1,8 +1,10 @@
 import os
+
 from binance.client import Client
 from dotenv import load_dotenv
 
 load_dotenv()
+
 
 class BinanceClient:
     def __init__(self):
@@ -14,14 +16,11 @@ class BinanceClient:
 
     def get_price(self) -> float:
         ticker = self.client.get_symbol_ticker(symbol=self.symbol)
-        return float(ticker['price'])
+        return float(ticker["price"])
 
     def place_order(self, side: str):
         if side.upper() not in ["BUY", "SELL"]:
             raise ValueError("Invalid order side")
         return self.client.create_order(
-            symbol=self.symbol,
-            side=side.upper(),
-            type="MARKET",
-            quantity=self.quantity
+            symbol=self.symbol, side=side.upper(), type="MARKET", quantity=self.quantity
         )
