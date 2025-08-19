@@ -22,5 +22,8 @@ class BinanceClient:
         if side.upper() not in ["BUY", "SELL"]:
             raise ValueError("Invalid order side")
         return self.client.create_order(
-            symbol=self.symbol, side=side.upper(), type="MARKET", quantity=self.quantity
+            symbol=self.symbol,
+            side=side.upper(),
+            type="MARKET",
+            quantity=self.quantity,
         )

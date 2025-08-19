@@ -23,7 +23,11 @@ class DatabaseManager:
 
     def log_trade(self, decision: str, price: float, explanation: str):
         with self.Session() as session:
-            trade = Trade(decision=decision, price=price, explanation=explanation)
+            trade = Trade(
+                decision=decision,
+                price=price,
+                explanation=explanation,
+            )
             session.add(trade)
             session.commit()
 
