@@ -1,14 +1,24 @@
-def test_should_buy(strategy):
-    assert strategy.should_buy(29000) is True
-    assert strategy.should_buy(31000) is False
+from trading.strategy import TradingStrategy
 
 
-def test_should_sell(strategy):
-    assert strategy.should_sell(36000) is True
-    assert strategy.should_sell(34000) is False
+def test_should_buy():
+    strategy = TradingStrategy()
+    short_ema = 105
+    long_ema = 100
+    assert strategy.should_buy(short_ema, long_ema) is True
 
 
-def test_decide(strategy):
-    assert strategy.decide(29000) == "buy"
-    assert strategy.decide(36000) == "sell"
-    assert strategy.decide(32000) == "hold"
+def test_should_sell():
+    strategy = TradingStrategy()
+    short_ema = 95
+    long_ema = 100
+    assert strategy.should_sell(short_ema, long_ema) is True
+
+
+def test_decide():
+    strategy = TradingStrategy(short_window=3, long_window=5)
+    prices = [100, 101, 102, 103, 104]
+    for price in prices:
+        strategy.decide(price)
+    decision = strategy.decide(105)
+    assert decision == "buy"
