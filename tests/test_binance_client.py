@@ -1,4 +1,5 @@
 from unittest.mock import patch
+
 from trading.binance_client import BinanceClient
 
 

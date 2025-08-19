@@ -13,11 +13,7 @@ def test_explain(mock_create):
                 "message": type(
                     "obj",
                     (object,),
-                    {
-                        "content": (
-                            "Compra porque el precio es bajo."
-                        )
-                    },
+                    {"content": ("Compra porque el precio es bajo.")},
                 )
             },
         )()

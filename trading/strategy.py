@@ -20,9 +20,7 @@ class TradingStrategy:
         self.prices.append(price)
         if len(self.prices) < self.long_window:
             return "hold"
-        short_ema = self.ema(
-            list(self.prices)[-self.short_window:], self.short_window
-        )
+        short_ema = self.ema(list(self.prices)[-self.short_window :], self.short_window)
         long_ema = self.ema(list(self.prices), self.long_window)
         if short_ema > long_ema:
             return "buy"
